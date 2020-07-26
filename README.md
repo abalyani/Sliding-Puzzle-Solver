@@ -1,6 +1,6 @@
 # Sliding Puzzle Solver
 
-This project finds the moves to solve any solvable sliding puzzle of any dimension NxN.
+This project finds the moves to solve any solvable sliding puzzle of any dimensions NxN.
 
 ## Use
 
@@ -24,7 +24,7 @@ The puzzle can either be randomly filled and shuffle or manually created. You ca
 By changing the integer in the main method you can change the dimensions of the puzzle.
 ```java
 	public static void main(String[] args) {
-		// Dimension of the puzzle
+		// Dimensions of the puzzle
 		int dimension = 4;
 		...
 		}
@@ -61,5 +61,5 @@ And you'd follow the same approach for a 4x4 puzzle:
         ...
 ```
 ## Recommendations and notes
-It's not recommended to use any of the uninformed search algorithms (BFS, DFS, ID, DLS) if the dimension of the puzzle is larger than 4x4. You should instead use the A* Search Algorithm as it yields the quickest and most optimal results thanks to it's admissible heuristic helps.
+It's not recommended to use any of the uninformed search algorithms (BFS, DFS, ID or DLS) if the dimensions of the puzzle is larger than 4x4. You should instead use the A* Search Algorithm as it yields the quickest and most optimal results thanks to it's admissible heuristic.
 I apologize for not providing a gui for this project as it's only an old project which I've recently had time to polish and clean-up.
