@@ -18,7 +18,7 @@ public class PuzzleSolver {
 	static double endTime;
 
 	public static void main(String[] args) {
-		// Dimension of the puzzle
+		// Dimensions of the puzzle
 		int dimension = 3;
 
 //		Choose one approach at a time
@@ -28,7 +28,7 @@ public class PuzzleSolver {
 	}
 
 	public static void randomInitialState(int dimension) {
-		// The given integer in the parameter of the initilized GTNode is the dimension
+		// The given integer in the parameter of the initilized GTNode is the dimensions
 		// of the puzzle (it doesn't have to be 3x3 it can be of any of size)
 		GTNode initial = new GTNode(dimension);
 
@@ -47,11 +47,11 @@ public class PuzzleSolver {
 	}
 
 	public static void preWrittenInitialState(int dimension) {
-		// The given integer in the parameter of the initilized GTNode is the dimension
+		// The given integer in the parameter of the initilized GTNode is the dimensions
 		// of the puzzle (it doesn't have to be 3x3 it can be of any of size)
 		GTNode initial = new GTNode(dimension);
 
-		// Prewritten initial state (if the dimension isn't 3x3, then change the input
+		// Prewritten initial state (if the dimensions aren't 3x3, then change the input
 		// accordingly)
 		int matrix[][] = { { 3, 2, 8 }, { 4, 0, 1 }, { 7, 6, 5 } };
 
