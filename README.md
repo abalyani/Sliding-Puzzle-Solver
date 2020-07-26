@@ -14,8 +14,9 @@ The puzzle can either be randomly filled and shuffle or manually created. You ca
 	public static void main(String[] args) {
         ...
 //		Choose one approach at a time
-//		preWrittenInitialState(dimension);
 		randomInitialState(dimension);
+//		preWrittenInitialState(dimension);
+
 	}
 ```
 
