@@ -1,6 +1,6 @@
 # Sliding Puzzle Solver
 
-This application solves any solvable sliding puzzle of any dimension NxN.
+This project finds the moves to solve any solvable sliding puzzle of any dimension NxN.
 
 ## Use
 
@@ -60,5 +60,6 @@ And you'd follow the same approach for a 4x4 puzzle:
         ...
 ```
 ## Recommendations and notes
+It's not recommended to use any of the uninformed search algorithms if the dimension of the puzzle is larger than 4x4.
 For the quickest results it's recommended to use the A* Search Algorithm. As it's heuristic helps immensely to find the shortest solution in a very short time.
 I apologize for not providing a gui for this project as it's only an old project which I've recently had time to polish and clean-up.
