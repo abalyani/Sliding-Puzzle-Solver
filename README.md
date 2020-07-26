@@ -61,6 +61,5 @@ And you'd follow the same approach for a 4x4 puzzle:
         ...
 ```
 ## Recommendations and notes
-It's not recommended to use any of the uninformed search algorithms if the dimension of the puzzle is larger than 4x4.
-For the quickest results it's recommended to use the A* Search Algorithm. As it's heuristic helps immensely to find the shortest solution in a very short time.
+It's not recommended to use any of the uninformed search algorithms(BFS, DFS, ID, DLS) if the dimension of the puzzle is larger than 4x4. You should instead use the A* Search Algorithm as it yields the quickest and most optimal results thanks to it's admissible heuristic helps.
 I apologize for not providing a gui for this project as it's only an old project which I've recently had time to polish and clean-up.
