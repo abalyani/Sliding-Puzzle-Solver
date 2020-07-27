@@ -57,6 +57,10 @@ public class PuzzleSolver {
 
 		// Assigning the matrix to the GTNode object
 		initial.matrix = matrix;
+		
+		// check for solvability
+		if(!initial.isSolvable())
+			System.out.println("This puzzle is unsolvable please change the input.");
 
 		// Choose only one algorithm at a time
 		Astar(initial);
