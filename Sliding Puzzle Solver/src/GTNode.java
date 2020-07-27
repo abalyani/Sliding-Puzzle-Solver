@@ -2,23 +2,25 @@ import java.util.HashMap;
 import java.util.Stack;
 import java.util.PriorityQueue;
 import java.util.Queue;
-import java.io.PrintWriter;
 import java.math.BigInteger;
 
 // GTNode as in General Tree Node (Each state of the puzzle is stored in an instant of a GTNode)
 public class GTNode implements Comparable<GTNode> {
 
-	// directions of a move of a state are stored to check for the feasibility of the provided move 
-	String dir[] = { "up", "down", "right", "left" }; 
+	// directions of a move of a state are stored to check for the feasibility of
+	// the provided move
+	String dir[] = { "up", "down", "right", "left" };
 	public int dimension;
-	// parent of the state is saved for tracking the solution when the goal-state is found
+	// parent of the state is saved for tracking the solution when the goal-state is
+	// found
 	public GTNode parent;
 	public int[][] matrix;
 	public int level;
-	// A* heuristic 
+	// A* heuristic
 	public int astar;
 
-	// constructor for initial state of the puzzle where size is the dimensions of the puzzle
+	// constructor for initial state of the puzzle where size is the dimensions of
+	// the puzzle
 	public GTNode(int size) {
 		this.dimension = size;
 		matrix = new int[size][size];
@@ -27,6 +29,7 @@ public class GTNode implements Comparable<GTNode> {
 		level = 0;
 		astar = heuristic() + level;
 	}
+
 	// constructor for generated states from explore methods
 	public GTNode(int[][] m, GTNode p) {
 		matrix = m;
@@ -37,11 +40,13 @@ public class GTNode implements Comparable<GTNode> {
 
 	// BFS exploration method to generate successors
 	public void explore(HashMap<BigInteger, Integer> visited, Queue<GTNode> openList) {
-		
-		// loop to check the possible moves of the current state and then adding them to the open list 
+
+		// loop to check the possible moves of the current state and then adding them to
+		// the open list
 		for (int i = 0; i < 4; i++) {
 			int[][] temp = copy();
-			// boolean flag to check if the generated possible state has already been generated
+			// boolean flag to check if the generated possible state has already been
+			// generated
 			boolean already = false;
 			if (move(temp, dir[i])) {
 				if (visited.containsKey(hash(temp))) {
@@ -58,16 +63,19 @@ public class GTNode implements Comparable<GTNode> {
 
 	// DFS, DLS and ID exploration method to generate successors
 	public void explore(HashMap<BigInteger, Integer> visited, Stack<GTNode> openList, int limit) {
-		
-		// if the given limit parameter is -1 then explore using DFS, if not then explore using DLS or ID
+
+		// if the given limit parameter is -1 then explore using DFS, if not then
+		// explore using DLS or ID
 		if (limit != -1)
 			if (this.level >= limit)
 				return;
 
-		// loop to check the possible moves of the current state and then adding them to the open list
+		// loop to check the possible moves of the current state and then adding them to
+		// the open list
 		for (int i = 0; i < 4; i++) {
 			int[][] temp = copy();
-			// boolean flag to check if the generated possible state has already been generated
+			// boolean flag to check if the generated possible state has already been
+			// generated
 			boolean already = false;
 			if (move(temp, dir[i])) {
 				if (visited.containsKey(hash(temp))) {
@@ -143,11 +151,16 @@ public class GTNode implements Comparable<GTNode> {
 		return matrix;
 	}
 
-	// shuffles the numbers in the curent state of the puzzle (only used in the initial state)
+	// shuffles the numbers in the curent state of the puzzle (only used in the
+	// initial state)
 	public void shuffle() {
-		matrix = fill();
-		move(matrix, "up");
-		move(matrix, "left");
+		// centering the blank spot
+		int limit = matrix.length - (matrix.length/2 + 1);
+		for (int i = 0; i < limit; i++) {
+			move(matrix, "up");
+			move(matrix, "left");
+		}
+		// moving the numbers around
 		for (int i = 0; i < 33 * dimension; i++) {
 			move(matrix, dir[(int) (Math.random() * 4)]);
 		}
@@ -244,6 +257,46 @@ public class GTNode implements Comparable<GTNode> {
 		}
 		BigInteger hash = new BigInteger(text);
 		return hash;
+	}
+
+	// checks solvability of the puzzle
+	public boolean isSolvable() {
+		int linMatrix[] = new int[matrix.length * matrix.length];
+		int count = 0;
+		for (int i = 0; i < matrix.length; i++)
+			for (int j = 0; j < matrix.length; j++) {
+				linMatrix[count] = matrix[i][j];
+				count++;
+			}
+		int parity = 0;
+		int gridWidth = (int) Math.sqrt(linMatrix.length);
+		int row = 0;
+		int blankRow = 0;
+
+		for (int i = 0; i < linMatrix.length; i++) {
+			if (i % gridWidth == 0) {
+				row++;
+			}
+			if (linMatrix[i] == 0) {
+				blankRow = row;
+				continue;
+			}
+			for (int j = i + 1; j < linMatrix.length; j++) {
+				if (linMatrix[i] > linMatrix[j] && linMatrix[j] != 0) {
+					parity++;
+				}
+			}
+		}
+
+		if (gridWidth % 2 == 0) {
+			if (blankRow % 2 == 0) {
+				return parity % 2 == 0;
+			} else {
+				return parity % 2 != 0;
+			}
+		} else {
+			return parity % 2 == 0;
+		}
 	}
 
 	@Override
