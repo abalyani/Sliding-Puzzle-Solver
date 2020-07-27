@@ -12,7 +12,7 @@ In an IDE run the main class PuzzleSolver.java and adjust the variables to your 
 The puzzle can either be randomly filled and shuffle or manually created. You can do this by un-commenting on the desired approach in the main method in the class PuzzleSolver.java (eg. the random initial is the desired approach):
 ```java
 	public static void main(String[] args) {
-        ...
+		...
 //		Choose one approach at a time
 		randomInitialState(dimension);
 //		preWrittenInitialState(dimension);
