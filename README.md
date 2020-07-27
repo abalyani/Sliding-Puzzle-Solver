@@ -16,7 +16,6 @@ The puzzle can either be randomly filled and shuffle or manually created. You ca
 //		Choose one approach at a time
 		randomInitialState(dimension);
 //		preWrittenInitialState(dimension);
-
 	}
 ```
 
@@ -43,11 +42,13 @@ For example here's the code for a 3x3 puzzle:
 And you'd follow the same approach for a 4x4 puzzle:
 ```java
     public static void preWrittenInitialState(int dimension) {
-    		...
+    	...
 		int matrix[][] = { { 1, 4, 8, 0 }, { 6, 2, 3, 11 }, { 13, 7, 10, 12 }, { 5, 9, 15, 14 } };
 		...
 		}
 ```
+The program will prompt you with this error message if your inputed numbers create an unsolvable puzzle:
+>       This puzzle is unsolvable please change the input.
 - #### Algorithms
  After customizing the puzzle to your preferences you can now choose which algorithm to solve the puzzle with by un-commenting one algorithm in each run:
  ```java
