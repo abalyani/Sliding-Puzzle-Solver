@@ -62,5 +62,5 @@ The program will prompt you with this error message if your inputed numbers crea
         ...
 ```
 ## Recommendations and notes
-It's not recommended to use any of the uninformed search algorithms (BFS, DFS, ID or DLS) if the dimensions of the puzzle is larger than 4x4. You should instead use the A* Search Algorithm as it yields the quickest and most optimal results thanks to it's admissible heuristic.
+If the dimensions of the puzzle are larger than 4x4 then it's not recommended to use any of the uninformed search algorithms (BFS, DFS, ID or DLS). You should instead use the A* Search Algorithm as it yields the quickest and most optimal results thanks to it's admissible heuristic.
 I apologize for not providing a gui for this project as it's only an old project which I've recently had time to polish and clean-up.
