@@ -2,7 +2,7 @@
 
 This project finds the moves to solve any solvable sliding puzzle of any dimensions NxN.
 
-## Use
+## Usage
 
 In an IDE run the main class PuzzleSolver.java and adjust the variables to your liking, and un-comment the algorithms you would like to use.
 
